@@ -1,0 +1,92 @@
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+servers:
+  - url: https://mindmuse-vuhdnbtiha-uc.a.run.app/
+    description: Production server
+paths:
+  /search_remote_jobs/:
+    get:
+      summary: Search Remote Jobs
+      operationId: search_remote_jobs_search_remote_jobs__get
+      parameters:
+        - name: title
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Title
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        422:
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /search_jobs/:
+    get:
+      summary: Search Af Jobs
+      operationId: search_af_jobs_search_jobs__get
+      parameters:
+        - name: search_term
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Search Term
+        - name: location
+          in: query
+          schema:
+            type: string
+            default: Stockholm
+            title: Location
+      responses:
+        200:
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        422:
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
