@@ -16,4 +16,6 @@ To add it to open ai you need to include the server url.
 openapi.yaml is a correct implementation.
 
 You can ask gpt-4 to fill out your yaml from a json template :-)
-<video src="chat_gpt_sophie_neko.mp4">
+
+[![Watch the video](video.png)](https://www.youtube.com/watch?v=IwCEiBiwQ_w?si=3_Ou60-0O_TPmAgW "Watch the video")
+
